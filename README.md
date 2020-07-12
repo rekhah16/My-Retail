@@ -11,7 +11,7 @@ DockerSwarm
 
 ### System Design
 
-
+![Image](https://github.com/rekhah16/My-Retail/blob/master/system-design.png)
 ### Setup Mongodb
 
 ### 
