@@ -22,11 +22,11 @@ $mvn clean install
 $java -jar /myretail-docker.jar
 
 #### Docker build and run with docker swarm
-$docker build -t myretail-docker .
-$docker stack deploy --compose-file docker-compose.yml myretail
+$docker build -t myretail-docker . \
+$docker stack deploy --compose-file docker-compose.yml myretail \
 
-check the pods running
-$docker ps
+check the pods running \
+$docker ps \
 
 
 
