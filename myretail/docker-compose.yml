@@ -1,0 +1,10 @@
+version: "3"
+services:
+  api:
+    image: myretail-docker
+    environment:
+      - spring.profiles.active=doc
+    deploy:
+      replicas: 2
+    ports:
+      - 8090:8090
