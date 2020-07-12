@@ -28,6 +28,10 @@ $docker stack deploy --compose-file docker-compose.yml myretail
 check the pods running \
 $docker ps 
 
+#### API Testing using postman
+[a link](https://github.com/rekhah16/My-Retail/blob/master/myretail.postman_collection.json)
+
+
 
 
 
