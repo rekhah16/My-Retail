@@ -17,16 +17,18 @@ Install and start mongodb by following instructions here https://github.com/mong
 Default port 27017
 
 #### Maven build and run the sprintboot app
-$cd /myretail
-$mvn clean install
+$cd /myretail \
+$mvn clean install \
 $java -jar /myretail-docker.jar
 
 #### Docker build and run with docker swarm
 $docker build -t myretail-docker . \
-$docker stack deploy --compose-file docker-compose.yml myretail \
+$docker stack deploy --compose-file docker-compose.yml myretail 
 
 check the pods running \
-$docker ps \
+$docker ps 
+
+
 
 
 
