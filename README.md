@@ -16,7 +16,7 @@ DockerSwarm
 Install and start mongodb by following instructions here https://github.com/mongodb/homebrew-brew
 Default port 27017
 
-#### Maven build and run the sprintboot app
+#### Maven build and run the app
 $cd /myretail \
 $mvn clean install \
 $java -jar /myretail-docker.jar
