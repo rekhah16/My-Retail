@@ -67,6 +67,9 @@ CONTAINER ID        NAME                                       CPU %            
 baf4848f1b8f        myretail_api.1.iftajmxtchnml556f7e0r4hkh   0.40%               362.7MiB / 1.944GiB   18.22%              115kB / 54.6kB      0B / 0B             35 
 
 
+##### delete swarm
+docker swarm leave --force
+
 #### API Testing using postman
 [https://github.com/rekhah16/My-Retail/blob/master/myretail.postman_collection.json](https://github.com/rekhah16/My-Retail/blob/master/myretail.postman_collection.json)
 
