@@ -46,7 +46,7 @@ Step 4/4 : ENTRYPOINT ["java","-jar", "-Dspring.profiles.active=doc", "/myretail
 Removing intermediate container 0231c20b27d2 \
  ---> 64c264d7724b \
 Successfully built 64c264d7724b \
-Successfully tagged myretail-docker:latest \
+Successfully tagged myretail-docker:latest 
 
 $ docker stack deploy --compose-file docker-compose.yml myretail \
 Creating network myretail_default 
@@ -55,16 +55,16 @@ Creating service myretail_api
 $ docker ps 
 CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS                  PORTS               NAMES \
 baf4848f1b8f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.1.iftajmxtchnml556f7e0r4hkh \
-96978547100f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.2.354wa0jrdiw5d190opkawgk14 \
+96978547100f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.2.354wa0jrdiw5d190opkawgk14 
 
 $ docker logs baf4848f1b8f
 
 $ docker exec -it baf4848f1b8f bash
 
 $ docker stats \
-CONTAINER ID        NAME                                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS 
+CONTAINER ID        NAME                                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS \
 216a5a5e16bd        myretail_api.2.6ajwg9x28i87rxausg3xb6idn   0.44%               311.8MiB / 1.944GiB   15.66%              97.5kB / 47.9kB     0B / 0B             34 \
-baf4848f1b8f        myretail_api.1.iftajmxtchnml556f7e0r4hkh   0.40%               362.7MiB / 1.944GiB   18.22%              115kB / 54.6kB      0B / 0B             35 \
+baf4848f1b8f        myretail_api.1.iftajmxtchnml556f7e0r4hkh   0.40%               362.7MiB / 1.944GiB   18.22%              115kB / 54.6kB      0B / 0B             35 
 
 
 #### API Testing using postman
