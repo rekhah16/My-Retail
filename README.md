@@ -22,49 +22,49 @@ $mvn clean install \
 $java -jar /myretail-docker.jar
 
 #### Docker build and run with docker swarm
-$ docker swarm init
-Swarm initialized: current node (qzhndg0ywtbfaklfr0uz9qkrd) is now a manager.
+$ docker swarm init \
+Swarm initialized: current node (qzhndg0ywtbfaklfr0uz9qkrd) is now a manager. 
 
-To add a worker to this swarm, run the following command:
+To add a worker to this swarm, run the following command: 
 
-    docker swarm join --token SWMTKN-1-601xc4cv9ujr1a576ki4y22ckmwriff2rwuap4julp62onrold-8gz9moe8l7gsuobz0oahzd0uy 192.168.65.3:2377
+    docker swarm join --token SWMTKN-1-601xc4cv9ujr1a576ki4y22ckmwriff2rwuap4julp62onrold-8gz9moe8l7gsuobz0oahzd0uy 192.168.65.3:2377 \
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
-$ docker build -t myretail-docker .
-Sending build context to Docker daemon  36.88MB
-Step 1/4 : FROM openjdk:8
- ---> b190ad78b520
-Step 2/4 : ADD target/myretail-docker.jar /myretail-docker.jar
- ---> d5aced8339e4
-Step 3/4 : EXPOSE 8090
- ---> Running in 17bd128c29f7
-Removing intermediate container 17bd128c29f7
- ---> ba15a0c0526f
-Step 4/4 : ENTRYPOINT ["java","-jar", "-Dspring.profiles.active=doc", "/myretail-docker.jar"]
- ---> Running in 0231c20b27d2
-Removing intermediate container 0231c20b27d2
- ---> 64c264d7724b
-Successfully built 64c264d7724b
-Successfully tagged myretail-docker:latest
+$ docker build -t myretail-docker . \
+Sending build context to Docker daemon  36.88MB \
+Step 1/4 : FROM openjdk:8 \
+ ---> b190ad78b520 \
+Step 2/4 : ADD target/myretail-docker.jar /myretail-docker.jar \
+ ---> d5aced8339e4 \
+Step 3/4 : EXPOSE 8090 \
+ ---> Running in 17bd128c29f7 \
+Removing intermediate container 17bd128c29f7 \
+ ---> ba15a0c0526f \
+Step 4/4 : ENTRYPOINT ["java","-jar", "-Dspring.profiles.active=doc", "/myretail-docker.jar"] \
+ ---> Running in 0231c20b27d2 \
+Removing intermediate container 0231c20b27d2 \
+ ---> 64c264d7724b \
+Successfully built 64c264d7724b \
+Successfully tagged myretail-docker:latest \
 
-$ docker stack deploy --compose-file docker-compose.yml myretail
-Creating network myretail_default
-Creating service myretail_api
+$ docker stack deploy --compose-file docker-compose.yml myretail \
+Creating network myretail_default 
+Creating service myretail_api 
 
-$ docker ps
-CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS                  PORTS               NAMES
-baf4848f1b8f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.1.iftajmxtchnml556f7e0r4hkh
-96978547100f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.2.354wa0jrdiw5d190opkawgk14
+$ docker ps 
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS                  PORTS               NAMES \
+baf4848f1b8f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.1.iftajmxtchnml556f7e0r4hkh \
+96978547100f        myretail-docker:latest   "java -jar -Dspring.…"   1 second ago        Up Less than a second   8090/tcp            myretail_api.2.354wa0jrdiw5d190opkawgk14 \
 
 $ docker logs baf4848f1b8f
 
 $ docker exec -it baf4848f1b8f bash
 
-$ docker stats
-CONTAINER ID        NAME                                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
-216a5a5e16bd        myretail_api.2.6ajwg9x28i87rxausg3xb6idn   0.44%               311.8MiB / 1.944GiB   15.66%              97.5kB / 47.9kB     0B / 0B             34
-baf4848f1b8f        myretail_api.1.iftajmxtchnml556f7e0r4hkh   0.40%               362.7MiB / 1.944GiB   18.22%              115kB / 54.6kB      0B / 0B             35
+$ docker stats \
+CONTAINER ID        NAME                                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS 
+216a5a5e16bd        myretail_api.2.6ajwg9x28i87rxausg3xb6idn   0.44%               311.8MiB / 1.944GiB   15.66%              97.5kB / 47.9kB     0B / 0B             34 \
+baf4848f1b8f        myretail_api.1.iftajmxtchnml556f7e0r4hkh   0.40%               362.7MiB / 1.944GiB   18.22%              115kB / 54.6kB      0B / 0B             35 \
 
 
 #### API Testing using postman
